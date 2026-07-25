@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "VmsBackendApplication",
+      "request": "launch",
+      "mainClass": "com.vms.VmsBackendApplication",
+      "projectName": "vms-backend",
+      "env": {
+        "JWT_SECRET": "a-long-random-string-at-least-32-characters-here"
+      }
+    }
+  ]
+}
