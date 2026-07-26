@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: vms-master-console-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vms_master_db
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none  # Flyway manages schema
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    baselineVersion: 0
+  security:
+    user:
+      name: admin
+      password: admin123
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    # Username and password are read from environment variables to avoid committing secrets.
+    # Set MAIL_USERNAME and MAIL_PASSWORD (App Password for Gmail) in your environment.
+    username: ${MAIL_USERNAME:vmsonline1881@gmail.com}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+server:
+  port: 8081
+  servlet:
+    context-path: /
+
+logging:
+  level:
+    root: INFO
+    com.vms: DEBUG
+
+# JWT Configuration
+jwt:
+  secret: vms-master-console-secret-key-change-in-production
+  expiration: 86400000  # 24 hours
+
+# CORS Configuration
+cors:
+  allowed-origins: "http://localhost:5174"  # Master Console frontend
+  allowed-methods: "GET,POST,PUT,DELETE,OPTIONS"
+  allowed-headers: "*"
+  allow-credentials: true

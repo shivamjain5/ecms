@@ -48,3 +48,7 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Local development secrets (do not commit real passwords)
+vms-master-console-backend/secrets/mail_password.txt
+vms-master-console-backend/secrets/mail_username.txt
+

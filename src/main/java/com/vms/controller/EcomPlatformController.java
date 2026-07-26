@@ -39,4 +39,16 @@ public class EcomPlatformController {
         platform.setActive(false);
         ecomPlatformRepository.save(platform);
     }
+
+    @GetMapping("/inactive")
+    public List<EcomPlatform> listInactive() {
+        return ecomPlatformRepository.findByActiveFalse();
+    }
+
+    @PutMapping("/{id}/activate")
+    public void activate(@PathVariable Long id) {
+        EcomPlatform platform = ecomPlatformRepository.findById(id).orElseThrow();
+        platform.setActive(true);
+        ecomPlatformRepository.save(platform);
+    }
 }

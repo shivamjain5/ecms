@@ -8,5 +8,6 @@ import java.util.Optional;
 
 public interface EcomPlatformRepository extends JpaRepository<EcomPlatform, Long> {
     List<EcomPlatform> findByActiveTrue();
+    List<EcomPlatform> findByActiveFalse();
     Optional<EcomPlatform> findByCode(String code);
 }
